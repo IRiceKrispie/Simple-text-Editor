@@ -16,7 +16,7 @@ const initdb = async () =>
   });
 
 // Export a function we will use to POST to the database.
-export const postDb = async (name, home, cell, email)  => {
+export const postDb = async (text, home, cell, email)  => {
   console.log('Post to the database');
 
   // Create a connection to the database database and version we want to use.
@@ -29,7 +29,7 @@ export const postDb = async (name, home, cell, email)  => {
   const store = tx.objectStore('contact');
 
   // Use the .add() method on the store and pass in the content.
-  const request = store.add({ name: name, home_phone: home, cell_phone: cell, email: email });
+  const request = store.add({ textTyped: text, home_phone: home, cell_phone: cell, email: email });
 
   // Get confirmation of the request.
   const result = await request;
