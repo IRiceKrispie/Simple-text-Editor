@@ -9,15 +9,15 @@ textarea.addEventListener('keyup', event => {
           .fill('<span></span>')
           .join('')
       })
-var text = "";
-console.log("New build 1");
+
 textarea.addEventListener('keydown', event => {
-        text += event.key;
-        if (event.key === "Enter"){
-          text.replace("Enter",'');
-          postDb(text);
-          text = "";
-        }
+        // console.log(event);
+        // ogText += event.key;
+        // if (event.key === 'Enter'){
+        //   var text = ogText.replace('Enter','');
+        //   postDb(text);
+        //   ogText = "";
+        // }
 
         
 
@@ -30,7 +30,21 @@ textarea.addEventListener('keydown', event => {
           event.preventDefault();
         }
       })
+textarea.addEventListener('keypress', event => {
+  if (event.key === 'Enter'){
+    var text = textarea.value;
+    deleteDb();
+    postDb(text);
+  }
 
+});
+
+textarea.addEventListener('blur', event => {
+    var text = textarea.value;
+    deleteDb();
+    postDb(text);
+
+});
 
 const fetchText = async () => {
   const result = await getDb();
