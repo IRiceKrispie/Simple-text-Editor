@@ -1,7 +1,7 @@
 import { postDb, getDb, deleteDb } from './database';
 const textarea = document.querySelector('textarea')
 const lineNumbers = document.querySelector('.line-numbers')
-
+//add numbers to text area
 textarea.addEventListener('keyup', event => {
         const numberOfLines = event.target.value.split('\n').length
 
@@ -10,17 +10,8 @@ textarea.addEventListener('keyup', event => {
           .join('')
       })
 
+//tab functionality in text area
 textarea.addEventListener('keydown', event => {
-        // console.log(event);
-        // ogText += event.key;
-        // if (event.key === 'Enter'){
-        //   var text = ogText.replace('Enter','');
-        //   postDb(text);
-        //   ogText = "";
-        // }
-
-        
-
         if (event.key === 'Tab') {
           const start = textarea.selectionStart
           const end = textarea.selectionEnd
@@ -30,6 +21,8 @@ textarea.addEventListener('keydown', event => {
           event.preventDefault();
         }
       })
+
+//save text if user presses enter
 textarea.addEventListener('keypress', event => {
   if (event.key === 'Enter'){
     var text = textarea.value;
@@ -38,7 +31,7 @@ textarea.addEventListener('keypress', event => {
   }
 
 });
-
+//save text if textarea loses focus
 textarea.addEventListener('blur', event => {
     var text = textarea.value;
     deleteDb();
@@ -46,6 +39,7 @@ textarea.addEventListener('blur', event => {
 
 });
 
+//fetch the text in the DB
 const fetchText = async () => {
   const result = await getDb();
   let text=``;
@@ -55,5 +49,5 @@ const fetchText = async () => {
 
   textarea.innerHTML = text;
 }
-
+//call the fetchText function
 fetchText();
