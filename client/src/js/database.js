@@ -29,7 +29,7 @@ export const postDb = async (text)  => {
   const store = tx.objectStore('textEditor');
 
   // Use the .add() method on the store and pass in the content.
-  const request = store.put({id: 1, textTyped: text });
+  const request = store.post({textTyped: text });
 
   // Get confirmation of the request.
   const result = await request;
@@ -51,7 +51,7 @@ export const getDb = async () => {
   const store = tx.objectStore('textEditor');
 
   // Use the .getAll() method to get all data in the database.
-  const request = store.get(1);
+  const request = store.getAll();
 
   // Get confirmation of the request.
   const result = await request;
