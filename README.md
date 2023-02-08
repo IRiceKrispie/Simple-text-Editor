@@ -11,3 +11,6 @@
 * Github:  https://github.com/IRiceKrispie/Simple-text-Editor
 
 ## Screenshots
+![mainPage](./screenShots/main.png)
+![withText](./screenShots/withText.png)
+![installed](./screenShots/installed.png)
